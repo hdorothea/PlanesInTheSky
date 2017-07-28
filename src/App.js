@@ -12,8 +12,13 @@ function App({ match, location }) {
     <div id="container">
       <div className="header">
         <div> Planes in the Sky </div>
-        <FontAwesome className="fa fa-github" />
-        <DataFilter showFilter={match.params.showFilter || 'SHOW_ALL'} contentFilters={queryString.parse(location.search)} />
+        <a href="https://github.com/hdorothea/PlanesInTheSky">
+          <FontAwesome className="fa fa-github" />
+        </a>
+        <DataFilter
+          showFilter={match.params.showFilter || 'SHOW_ALL'}
+          contentFilters={queryString.parse(location.search)}
+        />
       </div>
     </div>
   );
