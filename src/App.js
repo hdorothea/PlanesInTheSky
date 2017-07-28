@@ -13,7 +13,7 @@ function App({ match, location }) {
       <div className="header">
         <div> Planes in the Sky </div>
         <a href="https://github.com/hdorothea/PlanesInTheSky">
-          <FontAwesome className="fa fa-github" />
+          <FontAwesome name="fa-github" className="fa fa-github" />
         </a>
         <DataFilter
           showFilter={match.params.showFilter || 'SHOW_ALL'}
