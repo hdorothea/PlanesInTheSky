@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FlightInfoDisplay.css';
 
+import { keysToIndexApp } from '../utils/ApiUtils';
+
 class FlightInfoDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.updateBounds = this.updateBounds.bind(this);
-    this.state = {startI: 0, endI: this.props.paginationCount };
+    this.state = { startI: 0, endI: this.props.paginationCount };
   }
 
   updateBounds(next = true) {
@@ -30,19 +32,24 @@ class FlightInfoDisplay extends React.Component {
     return (
       <div>
         <table>
-          <tr>
-            <td>Id</td>
-            <td> Airline Country </td>
-          </tr>
-          {this.props.data.slice(this.state.startI, this.state.endI).map(datapoint =>
-            (<tr>
-              {' '}{datapoint.map(value =>
-                (<td>
-                  {' '}{value}
-                </td>),
+          <tbody>
+            <tr>
+              {Object.keys(keysToIndexApp).map(column =>
+                (<th key={column}>
+                  {column}
+                </th>),
               )}
-            </tr>),
-          )}
+            </tr>
+            {this.props.data.slice(this.state.startI, this.state.endI).map((datapoint, i) =>
+              (<tr key={i}>
+                {datapoint.map((value, i) =>
+                  (<td key={`${i}_${datapoint[keysToIndexApp.id]}`}>
+                    {value}
+                  </td>),
+                )}
+              </tr>),
+            )}
+          </tbody>
         </table>
         <div onClick={() => this.updateBounds(false)}> &lt; </div>
         <div onClick={this.updateBounds}> &gt; </div>
@@ -53,6 +60,6 @@ class FlightInfoDisplay extends React.Component {
 
 FlightInfoDisplay.propTypes = { paginationCount: PropTypes.number };
 
-FlightInfoDisplay.defaultProps = { paginationCount: 100 };
+FlightInfoDisplay.defaultProps = { paginationCount: 20 };
 
 export default FlightInfoDisplay;
