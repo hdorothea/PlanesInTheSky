@@ -1,9 +1,11 @@
-import { api } from './api';
 import { combineReducers } from 'redux';
 
-const Reducer = combineReducers({
-  api
+import { api } from './api';
+import { router } from './router';
 
+const Reducer = combineReducers({
+  api,
+  router
 });
 
 export default Reducer;
