@@ -8,6 +8,9 @@ import './index.css';
 import reducer from './reducers/index';
 import { Root } from './root';
 
+import { setRoute } from './actions/RouterActions';
+
+
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -15,6 +18,8 @@ const store = createStore(
     thunkMiddleware
   )
 );
+
+store.dispatch(setRoute(window.location.pathname + window.location.search));
 
 render(
   <Root store={store} />,
