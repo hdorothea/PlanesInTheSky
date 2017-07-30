@@ -17,7 +17,7 @@ export const keysToIndexApi = {
 
 export const keysToIndexApp = {
   id: 0,
-  'Airline Country': 1,
+  airlineCountry: 1,
 };
 
 export function filterData(data) {
@@ -27,6 +27,6 @@ export function filterData(data) {
 export function cleanData(data) {
   return data.map(datapoint => [
     datapoint[keysToIndexApi.icao24],
-    datapoint[keysToIndexApi.origin_country],
+    datapoint[keysToIndexApi.origin_country]
   ]);
 }

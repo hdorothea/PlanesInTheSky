@@ -2,15 +2,19 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 import DashBoard from '../components/DashBoard';
+import { keysToIndexApp } from '../utils/ApiUtils';
 
 class DataFilter extends React.Component {
   getFilteredData() {
-    console.log(this.props.contentFilters);
     switch (this.props.showFilter) {
       case 'SHOW_ALL':
         return this.props.data;
       case 'SHOW_FILTERED':
-        return [{ id: 'filtered', originCountry: 'BoraBora' }];
+        return this.props.data.filter(datapoint => {
+          console.log(datapoint[keysToIndexApp.airlineCountry]);
+          return this.props.airlineCountryFilters.includes(datapoint[keysToIndexApp.airlineCountry])
+        }
+        );
     }
   }
 
@@ -25,15 +29,9 @@ class DataFilter extends React.Component {
 
 const mapStateToProps = state => ({
   data: state.api.data,
+  showFilter: state.router.showFilter,
+  flyoverCountryFilters: state.router.flyOverCountry,
+  airlineCountryFilters: state.router.airlineCountry,
 });
-
-DataFilter.propTypes = {
-  data: PropTypes.array,
-  showFilter: PropTypes.string.isRequired,
-};
-
-DataFilter.defaultProps = {
-  data: null,
-};
 
 export default connect(mapStateToProps)(DataFilter);
