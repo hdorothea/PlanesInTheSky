@@ -17,8 +17,8 @@ export function fetchData() {
     dispatch(startDataRequest());
     return fetch('https://opensky-network.org/api/states/all')
       .then(response => response.json(), error => console.log(error))
-      .then(data => cleanData(filterData(data)))
+      .then(observations => cleanData(filterData(observations)))
       .catch(() => [[112, 'Germany'], [208, 'Austria']])
-      .then(data => dispatch(receiveData(data)));
+      .then(observations => dispatch(receiveData(observations)));
   };
 }

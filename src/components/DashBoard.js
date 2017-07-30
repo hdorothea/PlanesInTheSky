@@ -3,12 +3,8 @@ import PropTypes from 'prop-types';
 import './DashBoard.css';
 import FlightInfoDisplay from './FlightInfoDisplay';
 
-const DashBoard = ({ data }) => (
-  <FlightInfoDisplay data={data} />
+const DashBoard = ({ observations }) => (
+  <FlightInfoDisplay observations={observations} />
 );
-
-DashBoard.propTypes = { data: PropTypes.array.isRequired };
-
-DashBoard.defaultProps = { };
 
 export default DashBoard;

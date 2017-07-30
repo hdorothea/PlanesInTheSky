@@ -5,7 +5,7 @@ const initialState = {
   data: null,
 };
 
-export function api(state=initialState, action) {
+export function api(state = initialState, action) {
   switch (action.type) {
     case types.REQUEST_START:
       return Object.assign({}, state, {

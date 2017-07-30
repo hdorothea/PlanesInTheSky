@@ -20,13 +20,13 @@ export const keysToIndexApp = {
   airlineCountry: 1,
 };
 
-export function filterData(data) {
-  return data.states.filter(datapoint => !!datapoint[keysToIndexApi.on_ground]);
+export function filterData(observations) {
+  return observations.states.filter(observation => !!observation[keysToIndexApi.on_ground]);
 }
 
-export function cleanData(data) {
-  return data.map(datapoint => [
-    datapoint[keysToIndexApi.icao24],
-    datapoint[keysToIndexApi.origin_country]
+export function cleanData(observations) {
+  return observations.map(observation => [
+    observation[keysToIndexApi.icao24],
+    observation[keysToIndexApi.origin_country]
   ]);
 }

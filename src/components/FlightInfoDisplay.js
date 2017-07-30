@@ -21,7 +21,7 @@ class FlightInfoDisplay extends React.Component {
     this.setState((previousState) => {
       const newStartI = previousState.startI + offset;
       const newEndI = newStartI + Math.abs(offset);
-      if (newStartI < 0 || newStartI > this.props.data.length) {
+      if (newStartI < 0 || newStartI > this.props.observations.length) {
         return previousState;
       }
       return { startI: newStartI, endI: newEndI };
@@ -40,10 +40,10 @@ class FlightInfoDisplay extends React.Component {
                 </th>),
               )}
             </tr>
-            {this.props.data.slice(this.state.startI, this.state.endI).map((datapoint, i) =>
+            {this.props.observations.slice(this.state.startI, this.state.endI).map((observation, i) =>
               (<tr key={i}>
-                {datapoint.map((value, i) =>
-                  (<td key={`${i}_${datapoint[keysToIndexApp.id]}`}>
+                {observation.map((value, i) =>
+                  (<td key={`${i}_${observation[keysToIndexApp.id]}`}>
                     {value}
                   </td>),
                 )}
