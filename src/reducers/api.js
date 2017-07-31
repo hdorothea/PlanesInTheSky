@@ -2,7 +2,7 @@ import * as types from '../actions/ActionTypes';
 
 const initialState = {
   isFetching: false,
-  data: null,
+  observations: [],
 };
 
 export function api(state = initialState, action) {
@@ -14,7 +14,7 @@ export function api(state = initialState, action) {
     case types.RECEIVE_DATA:
       return Object.assign({}, state, {
         isFetching: false,
-        data: action.data,
+        observations: action.observations,
       });
     default:
       return state;

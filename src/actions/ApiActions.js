@@ -5,10 +5,10 @@ function startDataRequest() {
   return { type: 'REQUEST_START' };
 }
 
-function receiveData(data) {
+function receiveData(observations) {
   return {
     type: 'RECEIVE_DATA',
-    data
+    observations
   };
 }
 

@@ -20,6 +20,8 @@ export const keysToIndexApp = {
   airlineCountry: 1,
 };
 
+export const filterableValues = ['airlineCountry'];
+
 export function filterData(observations) {
   return observations.states.filter(observation => !!observation[keysToIndexApi.on_ground]);
 }

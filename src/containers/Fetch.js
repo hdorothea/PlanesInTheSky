@@ -19,7 +19,6 @@ class Fetch extends React.Component {
   }
 }
 
-Fetch.propTypes = { fetchData: PropTypes.func.isRequired };
 
 Fetch.defaultProps = {};
 
@@ -29,4 +28,5 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = () => ({});
 
+Fetch.propTypes = { fetchData: PropTypes.object.isRequired };
 export default connect(mapStateToProps, mapDispatchToProps)(Fetch);
