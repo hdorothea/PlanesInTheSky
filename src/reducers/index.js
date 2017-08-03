@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import { api } from './api';
-import { router } from './router';
+import { filter } from './filter';
 
 const Reducer = combineReducers({
   api,
-  router
+  filter
 });
 
 export default Reducer;
