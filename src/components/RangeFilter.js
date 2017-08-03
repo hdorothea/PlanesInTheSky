@@ -8,8 +8,6 @@ export default function RangeFilter({ min, max, currentMin, currentMax, updateCu
       min={min}
       max={max}
       onAfterChange={(e) => {
-        console.log(e[0]);
-        console.log(e[1]);
         updateCurrentRange(e[0], e[1]);
       }}
       value={[currentMin, currentMax]}
