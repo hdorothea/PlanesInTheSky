@@ -17,18 +17,14 @@ export const keysToIndexApi = {
 
 export const keysToIndexApp = {
   id: 0,
-  airlineCountry: 1,
+  airlineCountry: 1
 };
 
-export const filterableValues = ['airlineCountry'];
-
-export function filterData(observations) {
-  return observations.states.filter(observation => !!observation[keysToIndexApi.on_ground]);
-}
-
-export function cleanData(observations) {
-  return observations.map(observation => [
-    observation[keysToIndexApi.icao24],
-    observation[keysToIndexApi.origin_country]
-  ]);
+export function prepareData(observations) {
+  return observations.states
+    .filter(observation => !!observation[keysToIndexApi.on_ground])
+    .map(observation => [
+      observation[keysToIndexApi.icao24],
+      observation[keysToIndexApi.origin_country]
+    ]);
 }

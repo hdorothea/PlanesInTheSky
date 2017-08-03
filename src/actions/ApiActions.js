@@ -1,13 +1,14 @@
 import fetch from 'isomorphic-fetch';
-import { filterData, cleanData } from '../utils/ApiUtils.js';
+import { prepareData } from '../utils/ApiUtils.js';
+import * as types from './ActionTypes';
 
 function startDataRequest() {
-  return { type: 'REQUEST_START' };
+  return { type: types.REQUEST_START };
 }
 
 function receiveData(observations) {
   return {
-    type: 'RECEIVE_DATA',
+    type: types.RECEIVE_DATA,
     observations
   };
 }
@@ -17,7 +18,7 @@ export function fetchData() {
     dispatch(startDataRequest());
     return fetch('https://opensky-network.org/api/states/all')
       .then(response => response.json(), error => console.log(error))
-      .then(observations => cleanData(filterData(observations)))
+      .then(observations => prepareData(observations))
       .catch(() => [[112, 'Germany'], [208, 'Austria']])
       .then(observations => dispatch(receiveData(observations)));
   };
