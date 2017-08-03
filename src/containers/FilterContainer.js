@@ -2,54 +2,43 @@ import { connect } from 'react-redux';
 import React from 'react';
 
 import { FilterView } from '../components/FilterView';
-import { addFilter } from '../actions/RouterActions';
-import { removeFilter } from '../actions/RouterActions';
-import { keysToIndexApp, filterableValues } from '../utils/ApiUtils';
+import { addFilter } from '../actions/FilterActions';
+import { removeFilter } from '../actions/FilterActions';
+import { keysToIndexApp } from '../utils/ApiUtils';
 
-
-class FilterContainer extends React.Component {
-  addFilter() {
-    return (value, observation) => this.props.addFilter(this.props.path, value, observation);
-  }
-
-  removeFilter() {
-    return (value, observation) => this.props.removeFilter(this.props.path, value, observation);
-  }
-
-  render() {
-    return (
+function FilterContainer({
+  uniqueFlyoverCountries,
+  uniqueAirlineCountries,
+  addFilter,
+  removeFilter,
+  activeAirlineCountryFilterValues,
+  activeFlyoverCountryFilterValues
+}) {
+  return (
+    <div>
       <FilterView
-        addFilter={this.addFilter()}
-        removeFilter={this.removeFilter()}
-        filterables={this.props.filterables}
+        name="Airline Country"
+        addFilter={filterValue => addFilter('airlineCountry', filterValue)}
+        removeFilter={filterValue => removeFilter('airlineCountry', filterValue)}
+        uniqueFilterValues={uniqueAirlineCountries}
+        activeFilterValues={activeAirlineCountryFilterValues}
       />
-    );
-  }
-}
-
-function getFilterables(filterableValues, observations) {
-  const filterableObservations = {};
-  for (const filterableValue of filterableValues) {
-    filterableObservations[filterableValue] = [
-      ...new Set(observations.map(observation => observation[keysToIndexApp[filterableValue]])),
-    ];
-  }
-
-  return filterableObservations;
+    </div>
+  );
 }
 
 const mapDispatchToProps = dispatch => ({
-  addFilter: (path, value, observation) => {
-    dispatch(addFilter(path, value, observation));
-  },
-  removeFilter: (path, value, observation) => {
-    dispatch(removeFilter(path, value, observation));
-  },
+  addFilter: (filterKey, filterValue) => dispatch(addFilter(filterKey, filterValue)),
+  removeFilter: (filterKey, filterValue) => dispatch(removeFilter(filterKey, filterValue)),
 });
 
+function getUniqueValues(observations, key) {
+  return [...new Set(observations.map(observation => observation[keysToIndexApp[key]]))];
+}
+
 const mapStateToProps = state => ({
-  filterables: getFilterables(filterableValues, state.api.observations),
-  path: state.router.path,
+  uniqueAirlineCountries: getUniqueValues(state.api.observations, 'airlineCountry'),
+  activeAirlineCountryFilterValues: state.filter.airlineCountry,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterContainer);

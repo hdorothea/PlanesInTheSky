@@ -23,13 +23,13 @@ export class FilterAdder extends React.Component {
         className={this.state.mouseOver ? 'active' : ''}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
-        key={this.props.observation}
+        key={this.props.filterValue}
         onClick={() => {
-          this.props.addFilter(this.props.filterableValue, this.props.observation);
+          this.props.addFilter(this.props.filterValue);
           this.props.reset();
         }}
       >
-        {this.props.observation}
+        {this.props.filterValue}
       </div>
     );
   }

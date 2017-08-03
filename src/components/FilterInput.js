@@ -25,16 +25,16 @@ export class FilterInput extends React.Component {
         <input
           value={this.state.value}
           onChange={e => this.updateInputValue(e)}
-          placeholder={this.props.filterableValue}
+          placeholder={this.props.name}
         />
         {this.state.value !== ''
           ? <ul>
-            {this.props.filterableObservations
-              .filter(observation =>
-                observation.toLowerCase().startsWith(this.state.value.toLowerCase()),
+            {this.props.uniqueFilterValues
+              .filter(filterValue =>
+                filterValue.toLowerCase().startsWith(this.state.value.toLowerCase()),
               )
-              .map(observation =>
-                (<FilterAdder reset={this.reset} addFilter={this.props.addFilter} filterableValue={this.props.filterableValue} observation={observation} />)
+              .map(filterValue =>
+                (<FilterAdder reset={this.reset} addFilter={this.props.addFilter} filterValue={filterValue} />)
               )}
           </ul>
           : null}

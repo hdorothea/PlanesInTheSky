@@ -1,20 +1,25 @@
 import React from 'react';
 import { FilterInput } from './FilterInput';
-// import { FilterBoard } from './FilterBoard';
+import { FilterBoard } from './FilterBoard';
 
-export const FilterView = function ({ filterables, addFilter, removeFilter }) {
+export const FilterView = function ({
+  name,
+  uniqueFilterValues,
+  addFilter,
+  removeFilter,
+  activeFilterValues
+}) {
   return (
-    <div className="FilterInputView">
-      {Object.entries(filterables).map(([filterableValue, filterableObservations]) =>
-        (<FilterInput
-          key={filterableValue}
-          filterableValue={filterableValue}
-          filterableObservations={filterableObservations}
-          addFilter={addFilter}
-        />),
-      )}
+    <div>
+      <FilterInput
+        name={name}
+        addFilter={addFilter}
+        uniqueFilterValues={uniqueFilterValues}
+      />
+      <FilterBoard
+        removeFilter={removeFilter}
+        filterValues={activeFilterValues}
+      />
     </div>
   );
 };
-
-// <FilterBoard removeFilter={removeFilter} />
