@@ -6,15 +6,12 @@ import { keysToIndexApp, filterableValues } from '../utils/ApiUtils';
 
 class DashBoardContainer extends React.Component {
   getFilteredObservations() {
-    switch (this.props.showModal) {
-      case 'SHOW_ALL':
-        return this.props.observations;
-      case 'SHOW_FILTERED':
-        return this.props.observations.filter(
-          observation =>
-            this.props.flyoverCountryFilters.includes(observation.flyoverCountry) ||
-            this.props.airlineCountryFilters.includes(observation.airlineCountry),
-        );
+    if (this.props.showAll) {
+      return this.props.observations;
+    } else {
+      return this.props.observations.filter(observation =>
+        this.props.airlineCountryFilters.includes(observation[keysToIndexApp.airlineCountry]),
+      );
     }
   }
 
@@ -29,9 +26,8 @@ class DashBoardContainer extends React.Component {
 
 const mapStateToProps = state => ({
   observations: state.api.observations,
-  showModal: state.filter.show,
+  showAll: state.filter.showAll,
   airlineCountryFilters: state.filter.airlineCountry,
-  flyoverCountryFilters: state.filter.flyoverCountry,
 });
 
 export default connect(mapStateToProps)(DashBoardContainer);

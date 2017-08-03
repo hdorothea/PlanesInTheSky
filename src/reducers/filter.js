@@ -1,15 +1,15 @@
 import * as types from '../actions/ActionTypes';
 
 const initialState = {
-  show: 'SHOW_ALL',
+  showAll: true,
   airlineCountry: [],
   flyoverCountry: [],
 };
 
 export function filter(state = initialState, action) {
   switch (action.type) {
-    case types.SET_SHOW:
-      return Object.assign({}, state, { action });
+    case types.TOGGLE_SHOW:
+      return Object.assign({}, state, { showAll: !state.showAll });
     case types.ADD_FILTER:
       return Object.assign({}, state, {
         [action.filterKey]: [...state[action.filterKey], action.filterValue],

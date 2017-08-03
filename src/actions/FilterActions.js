@@ -1,8 +1,8 @@
 import * as types from '../actions/ActionTypes';
 
-export function setShow(value) {
+export function toggleShow() {
   return {
-    SHOW: value
+    type: types.TOGGLE_SHOW
   };
 }
 
