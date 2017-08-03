@@ -3,7 +3,7 @@ import FontAwesome from 'react-fontawesome';
 
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import VisibleObservations from './containers/VisibleObservations';
+import DashboardContainer from './containers/DashboardContainer';
 import FilterContainer from './containers/FilterContainer';
 
 function App() {
@@ -14,9 +14,9 @@ function App() {
         <a href="https://github.com/hdorothea/PlanesInTheSky">
           <FontAwesome name="fa-github" className="fa fa-github" />
         </a>
-        <FilterContainer />
-        <VisibleObservations />
       </div>
+      <FilterContainer />
+      <DashboardContainer />
     </div>
   );
 }
