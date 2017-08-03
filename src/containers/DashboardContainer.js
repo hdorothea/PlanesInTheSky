@@ -10,7 +10,7 @@ class DashBoardContainer extends React.Component {
       return this.props.observations;
     } else {
       return this.props.observations.filter(observation =>
-        this.props.airlineCountryFilters.includes(observation[keysToIndexApp.airlineCountry]),
+        this.props.airlineCountryFilters.includes(observation[keysToIndexApp['airlineCountry']]),
       );
     }
   }
@@ -27,7 +27,7 @@ class DashBoardContainer extends React.Component {
 const mapStateToProps = state => ({
   observations: state.api.observations,
   showAll: state.filter.showAll,
-  airlineCountryFilters: state.filter.airlineCountry,
+  airlineCountryFilters: state.filter.airlineCountry
 });
 
 export default connect(mapStateToProps)(DashBoardContainer);

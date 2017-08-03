@@ -6,6 +6,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import DashboardContainer from './containers/DashboardContainer';
 import FilterContainer from './containers/FilterContainer';
 import ShowModalContainer from './containers/ShowModalContainer';
+import RangeFilterContainer from './containers/RangeFilterContainer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         </a>
       </div>
       <FilterContainer />
+      <RangeFilterContainer />
       <ShowModalContainer />
       <DashboardContainer />
     </div>

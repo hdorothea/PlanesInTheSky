@@ -21,3 +21,14 @@ export function removeFilter(filterKey, filterValue) {
     filterValue
   };
 }
+
+export function updateRangeFilter(filterKey, filterMinValue, filterMaxValue) {
+  console.log(filterMinValue);
+  console.log(filterMaxValue);
+  return {
+    type: types.UPDATE_RANGE_FILTER,
+    filterKey,
+    newMin: filterMinValue,
+    newMax: filterMaxValue
+  };
+}

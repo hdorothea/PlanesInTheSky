@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FlightInfoDisplay.css';
 
-import { keysToIndexApp } from '../utils/ApiUtils';
+import { keysToIndexApp, keysToStringsApp } from '../utils/ApiUtils';
 
 class FlightInfoDisplay extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class FlightInfoDisplay extends React.Component {
             <tr>
               {Object.keys(keysToIndexApp).map(column =>
                 (<th key={column}>
-                  {column}
+                  {keysToStringsApp[column]}
                 </th>),
               )}
             </tr>

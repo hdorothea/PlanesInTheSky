@@ -3,7 +3,8 @@ import * as types from '../actions/ActionTypes';
 const initialState = {
   showAll: true,
   airlineCountry: [],
-  flyoverCountry: [],
+  latitude: { currentMax: 90, currentMin: -90 },
+  longtitude: { currentMax: 180, currentMin: -180 },
 };
 
 export function filter(state = initialState, action) {
@@ -19,6 +20,10 @@ export function filter(state = initialState, action) {
         [action.filterKey]: state[action.filterKey].filter(
           filterValue => filterValue !== action.filterValue,
         ),
+      });
+    case types.UPDATE_RANGE_FILTER:
+      return Object.assign({}, state, {
+        [action.filterKey]: { currentMax: action.newMax, currentMin: action.newMin },
       });
     default:
       return state;

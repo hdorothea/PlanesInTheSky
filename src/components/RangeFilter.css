@@ -1,0 +1,22 @@
+.slider {
+  width: 100%;
+  max-width: 500px;
+  height: 20px;
+  border: 1px solid gainsboro;
+}
+
+.handle {
+  font-size: 0.9em;
+  text-align: center;
+  background-color: gainsboro;
+  color: white;
+  cursor: pointer;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.bar {
+  position: relative;
+  background: #ddd;
+}
