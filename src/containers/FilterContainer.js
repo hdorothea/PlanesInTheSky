@@ -7,12 +7,10 @@ import { removeFilter } from '../actions/FilterActions';
 import { keysToIndexApp } from '../utils/ApiUtils';
 
 function FilterContainer({
-  uniqueFlyoverCountries,
   uniqueAirlineCountries,
   addFilter,
   removeFilter,
   activeAirlineCountryFilterValues,
-  activeFlyoverCountryFilterValues
 }) {
   return (
     <div>
