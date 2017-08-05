@@ -7,6 +7,7 @@ function startDataRequest() {
 }
 
 function receiveData(observations) {
+  observations = prepareData(observations);
   return {
     type: types.RECEIVE_DATA,
     observations
@@ -18,8 +19,6 @@ export function fetchData() {
     dispatch(startDataRequest());
     return fetch('https://opensky-network.org/api/states/all')
       .then(response => response.json(), error => console.log(error))
-      .then(observations => prepareData(observations))
-      .catch(() => [[112, 'Germany'], [208, 'Austria']])
       .then(observations => dispatch(receiveData(observations)));
   };
 }
