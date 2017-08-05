@@ -1,12 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 import reducer from './reducers/index';
-import { Root } from './root';
+import { fetchData } from './actions/ApiActions.js';
+import App from './App';
 
 const store = createStore(
   reducer,
@@ -14,6 +16,13 @@ const store = createStore(
   applyMiddleware(thunkMiddleware),
 );
 
-render(<Root store={store} />, document.getElementById('root'));
+store.dispatch(fetchData());
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
 
 registerServiceWorker();
