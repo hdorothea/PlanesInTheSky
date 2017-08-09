@@ -27,7 +27,11 @@ export const longtitudeBounds = { max: 180, min: -180 };
 
 export function prepareData(observations) {
   return observations.states
-    .filter(observation => !!observation[keysToIndexApi.onGround])
+    .filter(observation => !!observation[keysToIndexApi.onGround] &&
+    !!observation[keysToIndexApi.airlineCountry] &&
+    !!observation[keysToIndexApi.latitude] &&
+    !!observation[keysToIndexApi.longtitude]
+    )
     .map(observation => [
       observation[keysToIndexApi.icao24],
       observation[keysToIndexApi.airlineCountry],
