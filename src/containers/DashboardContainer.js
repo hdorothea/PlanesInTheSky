@@ -9,8 +9,15 @@ class DashBoardContainer extends React.Component {
     if (this.props.showAll) {
       return this.props.observations;
     } else {
-      return this.props.observations.filter(observation =>
-        this.props.airlineCountryFilters.includes(observation[keysToIndexApp['airlineCountry']]),
+      return this.props.observations.filter(
+        observation =>
+          (this.props.airlineCountryFilters.length > 0
+            ? this.props.airlineCountryFilters.includes(observation[keysToIndexApp.airlineCountry])
+            : true) &&
+          this.props.latitudeRangeFilter.currentMax > observation[keysToIndexApp.latitude] &&
+          this.props.latitudeRangeFilter.currentMin < observation[keysToIndexApp.latitude] &&
+          this.props.longtitudeRangeFilter.currentMax > observation[keysToIndexApp.longtitude] &&
+          this.props.longtitudeRangeFilter.currentMin < observation[keysToIndexApp.longtitude],
       );
     }
   }
@@ -27,7 +34,9 @@ class DashBoardContainer extends React.Component {
 const mapStateToProps = state => ({
   observations: state.api.observations,
   showAll: state.filter.showAll,
-  airlineCountryFilters: state.filter.airlineCountry
+  airlineCountryFilters: state.filter.airlineCountry,
+  latitudeRangeFilter: state.filter.latitude,
+  longtitudeRangeFilter: state.filter.longtitude,
 });
 
 export default connect(mapStateToProps)(DashBoardContainer);
