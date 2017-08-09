@@ -20,8 +20,6 @@ export const keysToIndexApp = {
   airlineCountry: 1,
   latitude: 2,
   longtitude: 3,
-  velocity: 4,
-  altitude: 5
 };
 
 export const latitudeBounds = { max: 90, min: -90 };
@@ -35,7 +33,5 @@ export function prepareData(observations) {
       observation[keysToIndexApi.airlineCountry],
       observation[keysToIndexApi.latitude],
       observation[keysToIndexApi.longtitude],
-      observation[keysToIndexApi.velocity],
-      observation[keysToIndexApi.altitude],
     ]);
 }

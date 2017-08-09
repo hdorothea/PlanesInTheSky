@@ -18,6 +18,8 @@ const store = createStore(
 
 store.dispatch(fetchData());
 
+// setInterval(() => store.dispatch(fetchData()), 10000);
+
 render(
   <Provider store={store}>
     <App />
