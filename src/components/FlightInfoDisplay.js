@@ -8,8 +8,17 @@ class FlightInfoDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.updateBounds = this.updateBounds.bind(this);
+    this.setInitialState();
+  }
+
+  componentWillReceiveProps() {
+    this.setInitialState();
+  }
+
+  setInitialState() {
     this.state = { startI: 0, endI: this.props.paginationCount };
   }
+
 
   updateBounds(next = true) {
     let offset;
