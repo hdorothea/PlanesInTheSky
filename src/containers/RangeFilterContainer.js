@@ -2,13 +2,14 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { updateRangeFilter } from '../actions/FilterActions';
 import RangeFilter from '../components/RangeFilter';
-import { latitudeBounds, longtitudeBounds} from '../utils/ApiUtils';
+import { latitudeBounds, longtitudeBounds } from '../utils/ApiUtils';
 
 export function RangeFilterContainer({ rangeFilters, updateCurrentRange }) {
   return (
     <div>
       {rangeFilters.map(filter =>
         (<RangeFilter
+          key={filter.filterKey}
           name={filter.filterKey}
           min={filter.bounds.min}
           max={filter.bounds.max}
