@@ -1,41 +1,103 @@
 import React from 'react';
-import { FilterAdder } from './FilterAdder';
+import styles from './FilterInput.css';
 
 export class FilterInput extends React.Component {
-  constructor() {
-    super();
-    this.state = { value: '' };
+  constructor(props) {
+    super(props);
+    this.initalState = {
+      queryString: '',
+      activeI: -1,
+      filteredValues: this.props.uniqueFilterValues,
+    };
+    this.state = this.initalState;
     this.updateInputValue = this.updateInputValue.bind(this);
+    this.updateActiveI = this.updateActiveI.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.reset = this.reset.bind(this);
+    this.resetActiveI = this.resetActiveI.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   reset() {
-    this.setState({ value: '' });
+    this.setState(this.initalState);
   }
 
   updateInputValue(e) {
+    const newFilteredValues = this.props.uniqueFilterValues.filter(filterValue =>
+      filterValue.toLowerCase().startsWith(e.target.value.toLowerCase())
+    );
     this.setState({
-      value: e.target.value,
+      filteredValues: newFilteredValues,
+      queryString: e.target.value,
+      activeI: this.initalState.activeI,
     });
+  }
+
+  onKeyDown(e) {
+    // uparrow
+    if (e.keyCode === 38) {
+      this.updateActiveI(-1);
+    }
+    // downarrow
+    if (e.keyCode === 40) {
+      this.updateActiveI(1);
+    }
+
+    // enter
+    if (e.keyCode === 13) {
+      this.submit();
+    }
+  }
+
+  setActiveI(i) {
+    this.setState({ ...this.state, activeI: i });
+  }
+
+  resetActiveI() {
+    this.setState({ ...this.state, activeI: this.initalState.activeI });
+  }
+
+  updateActiveI(incrementValue) {
+    let newActiveI = this.state.activeI + incrementValue;
+    if (newActiveI < 0) {
+      newActiveI = this.state.filteredValues.length - 1;
+    }
+
+    if (newActiveI > this.state.filteredValues.length - 1) {
+      newActiveI = 0;
+    }
+    this.setActiveI(newActiveI);
+  }
+
+  submit() {
+    if (this.state.filteredValues[this.state.activeI]) {
+      this.props.addFilter(this.state.filteredValues[this.state.activeI]);
+      this.reset();
+    }
   }
 
   render() {
     return (
-      <div>
+      <div onMouseLeave={this.reset}>
         <input
-          value={this.state.value}
+          value={this.state.queryString}
           onChange={e => this.updateInputValue(e)}
           placeholder={this.props.name}
+          onKeyDown={this.onKeyDown}
         />
-        {this.state.value !== ''
+        {this.state.queryString !== ''
           ? <ul>
-            {this.props.uniqueFilterValues
-              .filter(filterValue =>
-                filterValue.toLowerCase().startsWith(this.state.value.toLowerCase()),
-              )
-              .map(filterValue =>
-                (<FilterAdder reset={this.reset} addFilter={this.props.addFilter} filterValue={filterValue} />)
-              )}
+            {this.state.filteredValues.map((filterValue, i) =>
+              (<div
+                key={filterValue}
+                className={i === this.state.activeI ? 'active' : ''}
+                onMouseOver={() => this.setActiveI(i)}
+                onMouseOut={this.resetActiveI}
+                onClick={this.submit}
+              >
+                {filterValue}
+              </div>),
+            )}
           </ul>
           : null}
       </div>

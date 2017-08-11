@@ -5,7 +5,7 @@ export function FilterBoard({ filterValues, removeFilter }) {
   return (
     <div>
       {filterValues.map(value => (
-        <FilterButton filterValue={value} removeFilter={() => removeFilter(value)} />
+        <FilterButton key={value} filterValue={value} removeFilter={() => removeFilter(value)} />
       ))}
     </div>
   )
