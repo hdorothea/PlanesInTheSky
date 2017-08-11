@@ -15,8 +15,6 @@ export default class Plane extends React.Component {
     }));
   }
 
-  // visibility={this.state.mouseOver ? 'visible' : 'hidden'}
-
   render() {
     return (
       <g transform={this.props.transform}>
