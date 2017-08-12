@@ -22,9 +22,19 @@ class DashBoardContainer extends React.Component {
     }
   }
 
+  getBounds(rangeFilter) {
+    return [rangeFilter.currentMin, rangeFilter.currentMax]
+  }
+
   render() {
     if (this.props.observations.length > 0) {
-      return <DashBoard observations={this.getFilteredObservations()} />;
+      return (
+        <DashBoard
+          latitudeBounds={this.getBounds(this.props.latitudeRangeFilter)}
+          longtitudeBounds={this.getBounds(this.props.longtitudeRangeFilter)}
+          observations={this.getFilteredObservations()}
+        />
+      );
     } else {
       return null;
     }

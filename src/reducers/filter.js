@@ -1,10 +1,11 @@
 import * as types from '../actions/ActionTypes';
+import {latitudeBounds, longtitudeBounds} from '../utils/ApiUtils';
 
 const initialState = {
   showAll: true,
   airlineCountry: [],
-  latitude: { currentMax: 90, currentMin: -90 },
-  longtitude: { currentMax: 180, currentMin: -180 },
+  latitude: { currentMax: latitudeBounds.max, currentMin: latitudeBounds.min },
+  longtitude: { currentMax: longtitudeBounds.max, currentMin: longtitudeBounds.min },
 };
 
 export function filter(state = initialState, action) {
