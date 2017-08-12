@@ -10,17 +10,30 @@ import RangeFilterContainer from './containers/RangeFilterContainer';
 
 function App() {
   return (
-    <div id="container">
-      <div className="header">
-        <div> Planes in the Sky </div>
-        <a href="https://github.com/hdorothea/PlanesInTheSky">
-          <FontAwesome name="fa-github" className="fa fa-github" />
-        </a>
+    <div id="app-container">
+      <div id="app-header">
+        <div className="title">
+          {' '}<span>Planes</span>InTheSky{' '}
+        </div>
+        <div className="link-bar">
+          <a href="https://github.com/hdorothea/PlanesInTheSky">
+            <FontAwesome name="fa-github" className="fa fa-github" />
+            Source Code on Github
+          </a>
+          <a href="https://opensky-network.org/apidoc/rest.html">
+            <FontAwesome name="fa-plane" className="fa fa-plane" />
+            Open Sky Network Api
+          </a>
+        </div>
       </div>
-      <FilterContainer />
-      <RangeFilterContainer />
-      <ShowModalContainer />
-      <DashboardContainer />
+      <div className="app-content">
+        <div className="app-all-filters">
+          <RangeFilterContainer />
+          <FilterContainer />
+          <ShowModalContainer />
+        </div>
+        <DashboardContainer />
+      </div>
     </div>
   );
 }

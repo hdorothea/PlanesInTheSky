@@ -39,7 +39,7 @@ class FlightInfoDisplay extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="flight-info-display-container">
         <table>
           <tbody>
             <tr>

@@ -1,0 +1,54 @@
+#app-container {
+  background-color: #F0F0F0;
+  max-width: 2400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#app-header {
+  background-color: #4F4F4F;
+  display: flex;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+.title {
+  vertical-align: middle;
+  font-family: 'Poiret+One', cursive;
+  color:#6F6F6F;
+  font-size: 3rem;
+  background-color:#3E3E3E;
+  padding: 1.5rem;
+  width: 20%;
+}
+
+.title span {
+  color: #EAEAEA;
+}
+
+.link-bar a {
+  color: #EAEAEA;
+  vertical-align: center;
+  text-decoration: none;
+  padding: 2.5rem;
+}
+
+.link-bar{
+  display: flex;
+  font-size: 1.2rem;
+  font-family: 'Arial', sans-serif;
+  margin-right: 2rem;
+}
+
+.fa-github, .fa-plane {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.app-content {
+  display: flex;
+}
+
+.app-all-filters {
+  width: 20%;
+}
