@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  background-color: #4F4F4F;
+}
+
+.header .title-container {
+  width: 25rem;
+  background-color:#3E3E3E;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.header .title {
+  color:#6F6F6F;
+  text-align: center;
+  width: 100%;
+  font-family: 'Poiret+One', cursive;
+  font-size: 2.5rem;
+}
+
+ .header .title span {
+  color: #EAEAEA;
+} 
+
+.header .link-bar {
+  margin-right: 1rem;
+}
+
+.header .link-bar a {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  color: #EAEAEA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.header .link-bar .fa {
+  padding-right:1rem;
+}
