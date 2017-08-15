@@ -1,5 +1,5 @@
 import * as types from '../actions/ActionTypes';
-import {latitudeBounds, longtitudeBounds} from '../utils/ApiUtils';
+import { latitudeBounds, longtitudeBounds } from '../utils/ApiUtils';
 
 const initialState = {
   showAll: true,

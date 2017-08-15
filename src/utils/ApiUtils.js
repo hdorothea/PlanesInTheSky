@@ -22,8 +22,8 @@ export const keysToIndexApp = {
   longtitude: 3,
 };
 
-export const latitudeBounds = { max: 60, min: -60 };
-export const longtitudeBounds = { max: 175, min: -175 };
+export const latitudeBounds = { max: 90, min: -90 };
+export const longtitudeBounds = { max: 180, min: -180 };
 
 export function prepareData(observations) {
   return observations.states
