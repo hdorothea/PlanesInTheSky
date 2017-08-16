@@ -1,6 +1,7 @@
 import React from 'react';
 import { FilterInput } from './FilterInput';
 import { FilterBoard } from './FilterBoard';
+import './FilterView.css';
 
 export const FilterView = function ({
   name,
@@ -10,9 +11,9 @@ export const FilterView = function ({
   activeFilterValues
 }) {
   return (
-    <div>
+    <div className="filter-view">
+      <div className="name"> {name.toUpperCase()} </div>
       <FilterInput
-        name={name}
         addFilter={addFilter}
         uniqueFilterValues={uniqueFilterValues}
       />

@@ -13,15 +13,13 @@ function FilterContainer({
   activeAirlineCountryFilterValues,
 }) {
   return (
-    <div>
-      <FilterView
-        name="Airline Country"
-        addFilter={filterValue => addFilter('airlineCountry', filterValue)}
-        removeFilter={filterValue => removeFilter('airlineCountry', filterValue)}
-        uniqueFilterValues={uniqueAirlineCountries}
-        activeFilterValues={activeAirlineCountryFilterValues}
-      />
-    </div>
+    <FilterView
+      name="Airline Country"
+      addFilter={filterValue => addFilter('airlineCountry', filterValue)}
+      removeFilter={filterValue => removeFilter('airlineCountry', filterValue)}
+      uniqueFilterValues={uniqueAirlineCountries}
+      activeFilterValues={activeAirlineCountryFilterValues}
+    />
   );
 }
 

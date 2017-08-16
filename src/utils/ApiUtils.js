@@ -17,10 +17,12 @@ export const keysToIndexApi = {
 
 export const keysToIndexApp = {
   id: 0,
-  airlineCountry: 1,
-  latitude: 2,
-  longtitude: 3,
+  latitude: 1,
+  longtitude: 2,
+  airlineCountry: 3,
 };
+
+export const keysApp = ['id', 'latitude', 'longtitude', 'airlineCountry'];
 
 export const latitudeBounds = { max: 90, min: -90 };
 export const longtitudeBounds = { max: 180, min: -180 };
@@ -34,8 +36,8 @@ export function prepareData(observations) {
     )
     .map(observation => [
       observation[keysToIndexApi.icao24],
-      observation[keysToIndexApi.airlineCountry],
       observation[keysToIndexApi.latitude],
       observation[keysToIndexApi.longtitude],
+      observation[keysToIndexApi.airlineCountry],
     ]);
 }

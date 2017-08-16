@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FlightInfoDisplay.css';
 
-import { keysToIndexApp } from '../utils/ApiUtils';
+import { keysToIndexApp, keysApp } from '../utils/ApiUtils';
 
 class FlightInfoDisplay extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class FlightInfoDisplay extends React.Component {
   setInitialState() {
     this.state = { startI: 0, endI: this.props.paginationCount };
   }
-
 
   updateBounds(next = true) {
     let offset;
@@ -39,29 +38,37 @@ class FlightInfoDisplay extends React.Component {
 
   render() {
     return (
-      <div id="flight-info-display-container">
+      <div className="flight-info-display">
         <table>
           <tbody>
             <tr>
-              {Object.keys(keysToIndexApp).map(column =>
-                (<th key={column}>
-                  {column}
+              {keysApp.map(column =>
+                (<th className={column} key={column}>
+                  {column.toString().toUpperCase()}
                 </th>),
               )}
             </tr>
-            {this.props.observations.slice(this.state.startI, this.state.endI).map((observation, i) =>
-              (<tr key={i}>
-                {observation.map((value, i) =>
-                  (<td key={`${i}_${observation[keysToIndexApp.id]}`}>
-                    {value}
-                  </td>),
-                )}
-              </tr>),
-            )}
+            {this.props.observations
+              .slice(this.state.startI, this.state.endI)
+              .map((observation, i) =>
+                (<tr key={i}>
+                  {observation.map((value, i) =>
+                    (<td className={`${keysApp[i]}-cell`} key={`${i}_${observation[keysToIndexApp.id]}`}>
+                      {value.toString().toUpperCase()}
+                    </td>),
+                  )}
+                </tr>),
+              )}
           </tbody>
         </table>
-        <div onClick={() => this.updateBounds(false)}> &lt; </div>
-        <div onClick={this.updateBounds}> &gt; </div>
+        <div className="controls">
+          <span className="control" onClick={() => this.updateBounds(false)}>
+            {' '}&lt;{' '}
+          </span>
+          <span className="control" onClick={this.updateBounds}>
+            {' '}&gt;{' '}
+          </span>
+        </div>
       </div>
     );
   }
@@ -69,6 +76,6 @@ class FlightInfoDisplay extends React.Component {
 
 FlightInfoDisplay.propTypes = { paginationCount: PropTypes.number };
 
-FlightInfoDisplay.defaultProps = { paginationCount: 20 };
+FlightInfoDisplay.defaultProps = { paginationCount: 15 };
 
 export default FlightInfoDisplay;

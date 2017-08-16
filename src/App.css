@@ -1,7 +1,8 @@
 .app {
-  background-color: #F0F0F0;
   height: 100%;
-  max-width: 2000px;
+  display: flex; 
+  flex-direction: column;
+  width: 96%;
   margin-left: auto;
   margin-right: auto;
 }

@@ -1,3 +1,51 @@
-#flight-info-display-container {
-  background-color: #FFFFFF;
+.flight-info-display {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.flight-info-display table {
+   width: 100%; 
+   table-layout: fixed;   
+   font-size:0.5em;
+}
+
+.flight-info-display .id-cell {
+  font-family: 'Codystar', cursive;
+  font-weight: 900;
+  color: orange;
+}
+
+.flight-info-display .latitude-cell, .flight-info-display .longtitude-cell {
+  font-family: 'Codystar', cursive;
+  font-weight: 900;
+  color: green;
+}
+
+.flight-info-display .airlineCountry-cell {
+  font-family: 'Codystar', cursive;
+  font-weight: 900;
+  color: gray;
+  height: 2.5em;
+}
+
+.flight-info-display th {
+  font-weight: lighter;
+}
+
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.control {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.flight-info-display th {
+  color: black;
+  font-family: Roboto;
+  text-align: left;
 }

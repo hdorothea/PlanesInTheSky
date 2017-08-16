@@ -10,10 +10,8 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <div>
-        <FilterDashContainer />
-        <DashboardContainer />
-      </div>
+      <FilterDashContainer />
+      <DashboardContainer />
     </div>
   );
 }

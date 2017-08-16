@@ -4,8 +4,13 @@ import { latitudeBounds, longtitudeBounds } from '../utils/ApiUtils';
 const initialState = {
   showAll: true,
   airlineCountry: [],
-  latitude: { currentMax: latitudeBounds.max, currentMin: latitudeBounds.min },
-  longtitude: { currentMax: longtitudeBounds.max, currentMin: longtitudeBounds.min },
+  latitude: { currentMin: -60, currentMax: 85, max: latitudeBounds.max, min: latitudeBounds.min },
+  longtitude: {
+    currentMin: -175,
+    currentMax: 175,
+    max: longtitudeBounds.max,
+    min: longtitudeBounds.min,
+  },
 };
 
 export function filter(state = initialState, action) {
@@ -24,7 +29,10 @@ export function filter(state = initialState, action) {
       });
     case types.UPDATE_RANGE_FILTER:
       return Object.assign({}, state, {
-        [action.filterKey]: { currentMax: action.newMax, currentMin: action.newMin },
+        [action.filterKey]: Object.assign({}, state[action.filterKey], {
+          currentMax: action.newMax,
+          currentMin: action.newMin,
+        }),
       });
     default:
       return state;

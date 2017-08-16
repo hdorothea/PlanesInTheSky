@@ -24,7 +24,7 @@ export class FilterInput extends React.Component {
 
   updateInputValue(e) {
     const newFilteredValues = this.props.uniqueFilterValues.filter(filterValue =>
-      filterValue.toLowerCase().startsWith(e.target.value.toLowerCase())
+      filterValue.toLowerCase().startsWith(e.target.value.toLowerCase()),
     );
     this.setState({
       filteredValues: newFilteredValues,
@@ -78,17 +78,17 @@ export class FilterInput extends React.Component {
 
   render() {
     return (
-      <div onMouseLeave={this.reset}>
+      <div className="filter-input" onMouseLeave={this.reset}>
         <input
           value={this.state.queryString}
           onChange={e => this.updateInputValue(e)}
-          placeholder={this.props.name}
+          placeholder="Filter..."
           onKeyDown={this.onKeyDown}
         />
         {this.state.queryString !== ''
           ? <ul>
             {this.state.filteredValues.map((filterValue, i) =>
-              (<div
+              (<li
                 key={filterValue}
                 className={i === this.state.activeI ? 'active' : ''}
                 onMouseOver={() => this.setActiveI(i)}
@@ -96,7 +96,7 @@ export class FilterInput extends React.Component {
                 onClick={this.submit}
               >
                 {filterValue}
-              </div>),
+              </li>),
             )}
           </ul>
           : null}
