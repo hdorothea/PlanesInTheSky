@@ -9,7 +9,7 @@ import { SideBarDash } from '../common/Dashes';
 export default function FilterDash() {
   return (
     <div className="filters">
-      <SideBarDash className="sidebar-dash" name="Filter" icon={{ name: 'fa-sliders', className: 'fa fa-sliders' }}>
+      <SideBarDash name="Filter" icon={{ name: 'fa-sliders', className: 'fa fa-sliders' }}>
         <RangeFilterContainer />
         <FilterContainer />
         <ShowModalContainer />

@@ -2,21 +2,22 @@ import React from 'react';
 import './DashBoard.css';
 import FlightInfoDisplay from './FlightInfoDisplay';
 import WorldMap from './WorldMap';
-import Dash from './Dash';
+import { ContentDash } from '../common/Dashes';
+import './DashBoard.css';
 
 const DashBoard = ({ observations, latitudeRangeFilter, longtitudeRangeFilter, showAll }) =>
-  (<div id="dash-board-container">
-    <Dash name="Flight Information Display" icon={{ name: 'fa-tasks', className: 'fa fa-tasks' }}>
+  (<div className="dash-board">
+    <ContentDash name="Flight Information Display" icon={{ name: 'fa-tasks', className: 'fa fa-tasks' }}>
       <FlightInfoDisplay observations={observations} />
-    </Dash>
-    <Dash name="Map" icon={{ name: 'fa-map-marker', className: 'fa fa-map-marker' }}>
+    </ContentDash>
+    <ContentDash name="Map" icon={{ name: 'fa-map-marker', className: 'fa fa-map-marker' }}>
       <WorldMap
         latitudeRangeFilter={latitudeRangeFilter}
         longtitudeRangeFilter={longtitudeRangeFilter}
         observations={observations}
         showAll={showAll}
       />
-    </Dash>
+    </ContentDash>
   </div>);
 
 export default DashBoard;
