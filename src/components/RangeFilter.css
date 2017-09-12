@@ -5,7 +5,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   color: gray;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .range-filter .labelled-slider {
@@ -47,3 +47,8 @@
    margin-bottom: 1rem;
 }
 
+@media (min-width: 800px) {
+  .range-filter {
+    margin-bottom: 5rem;
+  }
+}

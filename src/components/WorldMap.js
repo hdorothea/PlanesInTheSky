@@ -32,7 +32,7 @@ export default class WorldMap extends React.Component {
     latitudeCurrentMax = Math.min(latitudeCurrentMax, 89.9);
 
     return (
-      <div id="world-map-container">
+      <div className="world-map">
         <svg viewBox={`0, -120 ${width} ${height}`} preserveAspectRatio="xMinYMin">
           {worlddata.features.map((d, i) => (
             <path

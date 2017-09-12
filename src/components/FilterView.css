@@ -12,3 +12,9 @@
   margin-bottom: 1rem;
   color: gray;
 }
+
+@media (min-width: 800px) {
+  .filter-input {
+    margin-bottom: 2rem;
+  }
+}

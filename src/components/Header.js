@@ -9,7 +9,7 @@ export default function Header() {
     <div className="header">
       <div className="title-container">
         <div className="title">
-          {' '}<span> Planes </span> InTheSky{' '}
+          {' '}<span>Planes</span>InTheSky{' '}
         </div>
       </div>
       <div className="link-bar">

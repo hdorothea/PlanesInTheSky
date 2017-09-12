@@ -1,3 +1,9 @@
 .range-filter-view {
   width: 100%;
 }
+
+@media (min-width: 800px) {
+  .range-filter-view {
+    margin-top: 3rem;
+  }
+}

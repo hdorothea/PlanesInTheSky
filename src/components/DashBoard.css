@@ -1,4 +1,9 @@
- /* #dash-board-container {
-  display: flex;
-  justify-content: space-evenly;
-}  */
+@media (min-width: 800px ){
+  .dash-board {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .dash-board {
+    flex-direction: column;
+  }
+}
