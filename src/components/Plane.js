@@ -27,11 +27,7 @@ export default class Plane extends React.Component {
           </text>
         </g>
         <image
-          xlinkHref={`countries/${countryToCode[
-            this.props.observation[keysToIndexApp.airlineCountry]
-          ]
-            ? countryToCode[this.props.observation[keysToIndexApp.airlineCountry]]
-            : this.props.observation[keysToIndexApp.airlineCountry]}.png`}
+          xlinkHref={`countries/${countryToCode[this.props.observation[keysToIndexApp.airlineCountry]]}.png`}
           width="15"
           height="15"
           onMouseOver={this.toggleMouseOver}

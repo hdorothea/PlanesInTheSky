@@ -19,7 +19,7 @@ export default function Header() {
         </a>
         <a href="https://opensky-network.org/apidoc/rest.html">
           <FontAwesome name="fa-plane" className="fa fa-plane" />
-          Open Sky Network Api
+          OpenSky Network API
         </a>
       </div>
     </div>
