@@ -8,7 +8,7 @@
   max-width: 2000px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
   .app .content {
     display: flex;
   }
