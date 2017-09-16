@@ -63,3 +63,9 @@
     vertical-align: middle;
   }
 }
+
+@media (max-width: 350px) {
+  .header a {
+    font-size: 0.6rem;
+  }
+}

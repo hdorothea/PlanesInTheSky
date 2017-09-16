@@ -13,11 +13,11 @@ export default class WorldMap extends React.Component {
   render() {
     const { observations, latitudeRangeFilter, longtitudeRangeFilter, showAll } = this.props;
     const width = 800;
-    const height = 700;
+    const height = 500;
 
     const projection = geoMercator()
       .scale(120)
-      .translate([400, 350]);
+      .translate([400, 230]);
     const pathGenerator = geoPath().projection(projection);
 
     let {
@@ -54,7 +54,8 @@ export default class WorldMap extends React.Component {
           {!showAll ? (
             <polyline
               fill="none"
-              stroke="black"
+              stroke="grey"
+              strokeWidth="2"
               points={`
             ${projection([longtitudeCurrentMin, latitudeCurrentMax]).join(',')} 
             ${projection([longtitudeCurrentMin, latitudeCurrentMin]).join(',')}

@@ -4,7 +4,7 @@ import { latitudeBounds, longtitudeBounds } from '../utils/ApiUtils';
 const initialState = {
   showAll: true,
   airlineCountry: [],
-  latitude: { currentMin: -60, currentMax: 85, max: latitudeBounds.max, min: latitudeBounds.min },
+  latitude: { currentMin: -55, currentMax: 83, max: latitudeBounds.max, min: latitudeBounds.min },
   longtitude: {
     currentMin: -175,
     currentMax: 175,

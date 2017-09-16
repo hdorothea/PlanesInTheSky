@@ -1,9 +1,6 @@
-@media (min-width: 800px ){
+
+@media (min-width: 800px) {
   .dash-board {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .dash-board {
-    flex-direction: column;
+    margin-left: 3rem;
   }
 }
