@@ -4,6 +4,7 @@ import ShowModalContainer from '../containers/ShowModalContainer';
 import RangeFilterContainer from '../containers/RangeFilterContainer';
 import FilterContainer from '../containers/FilterContainer';
 import { SideBarDash } from '../common/Dashes';
+import './FilterDash.css';
 
 
 export default function FilterDash() {

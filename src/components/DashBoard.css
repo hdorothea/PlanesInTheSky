@@ -1,6 +1,9 @@
 
 @media (min-width: 1000px) {
   .dash-board {
-    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    overflow: hidden;
   }
 }
