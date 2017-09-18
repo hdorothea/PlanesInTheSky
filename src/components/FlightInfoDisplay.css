@@ -34,6 +34,9 @@
 }
 
 .control {
+  background-color: white;
+  border: 0;
+  margin: 1em;
   padding-left: 1em;
   padding-right: 1em;
 }

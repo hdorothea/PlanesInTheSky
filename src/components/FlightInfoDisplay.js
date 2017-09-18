@@ -62,12 +62,12 @@ class FlightInfoDisplay extends React.Component {
           </tbody>
         </table>
         <div className="controls">
-          <span className="control" onClick={() => this.updateBounds(false)}>
+          <button className="control" onClick={() => this.updateBounds(false)}>
             {' '}&lt;{' '}
-          </span>
-          <span className="control" onClick={this.updateBounds}>
+          </button>
+          <button className="control" onClick={this.updateBounds}>
             {' '}&gt;{' '}
-          </span>
+          </button>
         </div>
       </div>
     );
