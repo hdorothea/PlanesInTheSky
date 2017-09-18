@@ -3,7 +3,12 @@
   display: flex; 
   flex-direction: column;
   margin-left: auto;
-  width: 96%;
   margin-right: auto;
   max-width: 2000px;
+}
+
+@media (min-width: 1000px) {
+  .app {
+    width: 96%;
+  }
 }

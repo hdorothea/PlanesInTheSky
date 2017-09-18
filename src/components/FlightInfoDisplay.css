@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 .flight-info-display table {
    width: 100%; 

@@ -9,6 +9,7 @@
 .dash {
   margin-bottom: 2rem;
   width: 100%;
+  overflow: hidden;
 }
 
 .dash .top-bar {
