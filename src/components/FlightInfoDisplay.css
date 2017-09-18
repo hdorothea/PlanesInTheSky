@@ -48,16 +48,24 @@
 }
 
 
-@media (max-width: 375px) {
+@media (max-width: 350px) {
+  .flight-info-display table {
+    font-size: 0.4em;
+  }
+
   .flight-info-display .id {
     width: 5em;
   }
   
   .flight-info-display .latitude {
-    width: 7em;
+    width: 5em;
   }
   
   .flight-info-display .longtitude {
+    width: 6em;
+  }
+
+  .flight-info-display .airlineCountry {
     width: 7em;
   }
 }
