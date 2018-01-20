@@ -14,11 +14,16 @@ function receiveData(observations) {
   };
 }
 
+function acknowledgeRequestFail(err) {
+  return { type: types.REQUEST_FAIL, err };
+}
+
 export function fetchData() {
   return (dispatch) => {
     dispatch(startDataRequest());
     return fetch('https://opensky-network.org/api/states/all')
-      .then(response => response.json(), error => console.log(error))
-      .then(observations => dispatch(receiveData(observations)));
+      .then(response => response.json())
+      .then(observations => dispatch(receiveData(observations)))
+      .catch(err => dispatch(acknowledgeRequestFail(err)));
   };
 }

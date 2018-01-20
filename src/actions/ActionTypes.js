@@ -1,4 +1,5 @@
 export const REQUEST_START = 'REQUEST_START';
+export const REQUEST_FAIL = 'REQUEST_FAIL';
 export const RECEIVE_DATA = 'RECEIVE_DATA';
 
 export const TOGGLE_SHOW = 'TOGGLE_SHOW';
