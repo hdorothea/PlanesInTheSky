@@ -18,20 +18,6 @@ export class FilterInput extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-  reset() {
-    this.setState(this.initalState);
-  }
-
-  updateInputValue(e) {
-    const newFilteredValues = this.props.uniqueFilterValues.filter(filterValue =>
-      filterValue.toLowerCase().startsWith(e.target.value.toLowerCase()),
-    );
-    this.setState({
-      filteredValues: newFilteredValues,
-      queryString: e.target.value,
-      activeI: this.initalState.activeI,
-    });
-  }
 
   onKeyDown(e) {
     // uparrow
@@ -51,6 +37,21 @@ export class FilterInput extends React.Component {
 
   setActiveI(i) {
     this.setState({ ...this.state, activeI: i });
+  }
+
+  updateInputValue(e) {
+    const newFilteredValues = this.props.uniqueFilterValues.filter(filterValue =>
+      filterValue.toLowerCase().startsWith(e.target.value.toLowerCase()),
+    );
+    this.setState({
+      filteredValues: newFilteredValues,
+      queryString: e.target.value,
+      activeI: this.initalState.activeI,
+    });
+  }
+
+  reset() {
+    this.setState(this.initalState);
   }
 
   resetActiveI() {
