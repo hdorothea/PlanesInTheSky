@@ -2,14 +2,11 @@ import React from 'react';
 import { geoMercator, geoPath } from 'd3-geo';
 import worlddata from '../data/world';
 import Plane from './Plane';
-import { keysToIndexApp, latitudeBounds, longtitudeBounds } from '../utils/ApiUtils';
+import RangeRect from './RangeRect';
+import { keysToIndexApp } from '../utils/ApiUtils';
 import './WorldMap.css';
 
 export default class WorldMap extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { observations, latitudeRangeFilter, longtitudeRangeFilter, showAll } = this.props;
     const width = 800;
@@ -19,17 +16,6 @@ export default class WorldMap extends React.Component {
       .scale(120)
       .translate([400, 230]);
     const pathGenerator = geoPath().projection(projection);
-
-    let {
-      currentMin: longtitudeCurrentMin,
-      currentMax: longtitudeCurrentMax,
-    } = longtitudeRangeFilter;
-    let { currentMin: latitudeCurrentMin, currentMax: latitudeCurrentMax } = latitudeRangeFilter;
-
-    longtitudeCurrentMin = Math.max(longtitudeCurrentMin, -179.9);
-    longtitudeCurrentMax = Math.min(longtitudeCurrentMax, 179.9);
-    latitudeCurrentMin = Math.max(latitudeCurrentMin, -89.9);
-    latitudeCurrentMax = Math.min(latitudeCurrentMax, 89.9);
 
     return (
       <div className="world-map">
@@ -47,21 +33,15 @@ export default class WorldMap extends React.Component {
               observation={observation}
               transform={`translate(${projection([
                 observation[keysToIndexApp.longtitude],
-                observation[keysToIndexApp.latitude],
+                observation[keysToIndexApp.latitude]
               ])})`}
             />
           ))}
           {!showAll ? (
-            <polyline
-              fill="none"
-              stroke="grey"
-              strokeWidth="2"
-              points={`
-            ${projection([longtitudeCurrentMin, latitudeCurrentMax]).join(',')} 
-            ${projection([longtitudeCurrentMin, latitudeCurrentMin]).join(',')}
-            ${projection([longtitudeCurrentMax, latitudeCurrentMin]).join(',')}
-            ${projection([longtitudeCurrentMax, latitudeCurrentMax]).join(',')}
-            ${projection([longtitudeCurrentMin, latitudeCurrentMax]).join(',')} `}
+            <RangeRect
+              projection={projection}
+              longtitudeRangeFilter={longtitudeRangeFilter}
+              latitudeRangeFilter={latitudeRangeFilter}
             />
           ) : (
             ''
