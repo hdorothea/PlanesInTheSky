@@ -2,12 +2,12 @@ import React from 'react';
 import './DashBoard.css';
 import FlightInfoDisplay from './FlightInfoDisplay';
 import WorldMap from './WorldMap';
-import { ContentDash } from '../common/Dashes';
+import Dash from '../common/Dash';
 import './DashBoard.css';
 
 const DashBoard = ({ observations, latitudeRangeFilter, longtitudeRangeFilter, showAll }) => (
-  <div className="dash-board">
-    <ContentDash
+  <div className="content-dash dash-board">
+    <Dash
       className="map-dash"
       name="Map"
       icon={{ name: 'fa-map-marker', className: 'fa fa-map-marker' }}
@@ -18,14 +18,14 @@ const DashBoard = ({ observations, latitudeRangeFilter, longtitudeRangeFilter, s
         observations={observations}
         showAll={showAll}
       />
-    </ContentDash>
-    <ContentDash
-      className="flight-info-dash"
+    </Dash>
+    <Dash
+      className="content-dash flight-info-dash"
       name="Flight Information Display"
       icon={{ name: 'fa-tasks', className: 'fa fa-tasks' }}
     >
       <FlightInfoDisplay observations={observations} />
-    </ContentDash>
+    </Dash>
   </div>
 );
 
